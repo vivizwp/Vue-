@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Vue的基本代码</title>
+		<script src="js/vue-2.4.0.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<p>{{msg}}</p>
+		</div>
+		<script>
+			var vm=new Vue({
+				el:'#app',
+				data:{
+					msg:'这是Vue的基本代码'
+				}
+			})
+		</script>
+	</body>
+</html>
