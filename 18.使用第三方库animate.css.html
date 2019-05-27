@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>使用第三方库animate.css</title>
+		<script src="js/vue-2.4.0.js"></script>
+		<link rel="stylesheet" href="./css/animate.css">
+	</head>
+	<body>
+		<div id="app">
+			<button @click='flag=!flag'>toggle</button>
+			
+			<transition enter-active-class="bounceIn"
+			leave-active-class="bounceOut"
+			:duration="{enter:200,leave:400}">
+				<p v-if='flag' class="animated">这是P标签内容</p>
+			</transition>
+			<!-- <transition enter-active-class="bounceIn" leave-active-class="bounceOut" :duration="{ enter: 200, leave: 400 }">
+				<h3 v-if="flag" class="animated">这是一个H3</h3>
+			</transition> -->
+
+		</div>
+		<script>
+			new Vue({
+				el: '#app',
+				data: {
+					flag: true
+				}
+			})
+		</script>
+	</body>
+</html>

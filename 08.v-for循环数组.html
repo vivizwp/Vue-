@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>v-for循环数组</title>
+		<script src="js/vue-2.4.0.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<ul>
+				<li v-for="(item,index) in arr">索引值{{index}},内容为{{item}}</li>
+			</ul>
+			<p v-for="(item,index) in list">Id:{{item.id}}===名字：{{item.name}}===索引值:{{index}}</p>
+		</div>
+
+
+		<script>
+			new Vue({
+				el: "#app",
+				data: {
+					arr: [
+						5, 4, 3, 2, 1
+					],
+					list: [{
+							id: 1,
+							name: 'zs1'
+						},
+						{
+							id: 2,
+							name: 'zs2'
+						},
+						{
+							id: 3,
+							name: 'zs3'
+						},
+						{
+							id: 4,
+							name: 'zs4'
+						}
+					]
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/vue-2.4.0.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<com></com>
+		</div>
+		<template id='tmp1'>
+			<div>
+				这是创建的组件2222
+			</div>
+		</template>
+		<script>
+			Vue.component('com',{
+				template:'#tmp1'
+			})
+			new Vue({
+				el:'#app',
+				data:{},
+			})
+		</script>
+	</body>
+</html>
