@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/vue-2.4.0.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<mycom @func='show'></mycom>
+		</div>
+		<script>
+			new Vue({
+				el:'#app',
+				data:{},
+				methods:{
+					show(){
+						console.log('执行了show方法')
+					}
+				},
+				components:{
+					mycom:{
+						template:"<div><h3>这是子组件的内容</h3><button @click='myclick'>点击</button></div>",
+						methods:{
+							myclick(){
+								// console.log('myclick')
+								// 不能直接this.$emit('show')
+								this.$emit('func')
+								
+							}
+						}
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

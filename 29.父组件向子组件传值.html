@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/vue-2.4.0.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<child :childmsg='parentmsg'></child>
+		</div>
+		<script>
+			var child={
+				template:'<div><h2>这是Child子组件{{childmsg}}</h2></div>',
+				data(){
+					return {
+						
+					}
+				},
+				props:['childmsg']
+			};
+			
+			Vue.component('child',child)
+			new Vue({
+				el:'#app',
+				data:{
+					parentmsg:'父组件的内容'
+				},
+				methods:{}
+// 				components:{
+// 					child
+// 				}
+			})
+		</script>
+	</body>
+</html>

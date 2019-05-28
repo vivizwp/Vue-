@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/vue-2.4.0.js"></script>
+		<script src="js/vue-router-3.0.1.js"></script>
+		<style>
+			.router-link-active,
+			.myactive {
+				color: red;
+				font-weight: 800;
+				font-style: italic;
+				font-size: 80px;
+				text-decoration: underline;
+				background-color: green;
+			}
+
+			.v-enter,
+			.v-leave-to {
+				opacity: 0;
+				transform: translateX(150px);
+			}
+
+			.v-enter-active,
+			.v-leave-active {
+				transition: all 1s ease
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<router-link to='/login'>登录</router-link>
+			<router-link to='/register'>注册</router-link>
+			<transition mode='out-in'>
+				<!-- 这是 vue-router 提供的元素，专门用来 当作占位符的，将来，路由规则，匹配到的组件，就会展示到这个 router-view 中去 -->
+				<!-- 所以： 我们可以把 router-view 认为是一个占位符 -->
+				<router-view></router-view>
+			</transition>
+		</div>
+		<script>
+			var login = {
+				template: '<div><h3>登录组件</h3></div>'
+			};
+			var register = {
+				template: '<div><h3>注册组件</h3></div>'
+			};
+
+			var router = new VueRouter({
+				routes: [ // 路由匹配规则 
+					// 每个路由规则，都是一个对象，这个规则对象，身上，有两个必须的属性：
+					//  属性1 是 path， 表示监听 哪个路由链接地址；
+					//  属性2 是 component， 表示，如果 路由是前面匹配到的 path ，则展示 component 属性对应的那个组件
+					// 注意： component 的属性值，必须是一个 组件的模板对象， 不能是 组件的引用名称；
+					// { path: '/', component: login },
+					{
+						path: '/',
+						redirect: '/login'
+					}, // 这里的 redirect 和 Node 中的 redirect 完全是两码事
+					{
+						path: '/login',
+						component: login
+					},
+					{
+						path: '/register',
+						component: register
+					}
+				],
+				linkActiveClass: 'myactive'
+			})
+			new Vue({
+				el: '#app',
+				data: {},
+				methods: {},
+				components: {
+					login,
+					register
+				},
+				router
+			})
+		</script>
+	</body>
+</html>
